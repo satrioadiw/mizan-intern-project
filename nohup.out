@@ -1,0 +1,1046 @@
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 10:07:14.824 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 10:07:36.689 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:07:36.869 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:07:37.823 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+/content/app.py:197: FutureWarning:
+
+
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+
+2026-07-04 10:07:39.791 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:07:39.831 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 10:19:55.458 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 10:23:24.003 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:23:24.134 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:23:24.165 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:23:24.205 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:23:24.224 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+[31m──[0m[31m────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────────[0m[31m──[0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mexec_code.py[0m: [31m [0m
+[31m [0m [94m129[0m in [92mexec_func_with_error_handling[0m                                                 [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mscript_runner[0m [31m [0m
+[31m [0m [1;33m.py[0m:[94m789[0m in [92mcode_to_exec[0m                                                              [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/content/[0m[1;33mapp.py[0m:[94m162[0m in [92m<module>[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m159 [0mtrend_data = df_trend.groupby([33m'[0m[33mMonth[0m[33m'[0m).size().reset_index(name=[33m'[0m[33mTransactions[0m[33m'[0m) [31m [0m
+[31m [0m   [2m160 [0m                                                                               [31m [0m
+[31m [0m   [2m161 [0mfig_trend = px.area(trend_data, x=[33m'[0m[33mMonth[0m[33m'[0m, y=[33m'[0m[33mTransactions[0m[33m'[0m, title=[33m'[0m[33mInteractiv[0m [31m [0m
+[31m [0m [31m❱ [0m162 [94mfor[0m p [95min[0m [1;4mramadhan_periods[0m:                                                     [31m [0m
+[31m [0m   [2m163 [0m[2m│   [0mfig_trend.add_vrect(x0=p[[33m'[0m[33mstart[0m[33m'[0m], x1=p[[33m'[0m[33mend[0m[33m'[0m], fillcolor=[33m"[0m[33morange[0m[33m"[0m, opacit [31m [0m
+[31m [0m   [2m164 [0mst.plotly_chart(fig_trend, use_container_width=[94mTrue[0m)                           [31m [0m
+[31m [0m   [2m165 [0m                                                                               [31m [0m
+[31m────────────────────────────────────────────────────────────────────────────────────────[0m
+[1;91mNameError: [0mname [32m'ramadhan_periods'[0m is not defined
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 10:28:15.917 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 10:28:33.165 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:28:33.383 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:28:33.432 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:28:33.597 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:28:33.701 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+[31m──[0m[31m────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────────[0m[31m──[0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mexec_code.py[0m: [31m [0m
+[31m [0m [94m129[0m in [92mexec_func_with_error_handling[0m                                                 [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mscript_runner[0m [31m [0m
+[31m [0m [1;33m.py[0m:[94m789[0m in [92mcode_to_exec[0m                                                              [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/content/[0m[1;33mapp.py[0m:[94m159[0m in [92m<module>[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m156 [0m                                                                               [31m [0m
+[31m [0m   [2m157 [0m[94mwith[0m colb:                                                                     [31m [0m
+[31m [0m   [2m158 [0m[2m│   [0mst.subheader([33m"[0m[33m⚖ Affinity Score Spread[0m[33m"[0m)                                    [31m [0m
+[31m [0m [31m❱ [0m159 [2m│   [0mfig_box = [1;4mpx.box(filtered_df.drop_duplicates([0m[1;4;33m'[0m[1;4;33mdonor_id[0m[1;4;33m'[0m[1;4m), x=[0m[1;4;33m'[0m[1;4;33mdonor_segment[0m [31m [0m
+[31m [0m   [2m160 [0m[2m│   [0mst.plotly_chart(fig_box, use_container_width=[94mTrue[0m)                         [31m [0m
+[31m [0m   [2m161 [0m                                                                               [31m [0m
+[31m [0m   [2m162 [0mst.markdown([33m"[0m[33m<div class=[0m[33m'[0m[33msection-divider[0m[33m'[0m[33m></div>[0m[33m"[0m, unsafe_allow_html=[94mTrue[0m)     [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/plotly/express/[0m[1;33m_chart_types.py[0m:[94m666[0m in [92mbox[0m    [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m 663 [0m[2;33m│   [0m[33mwhiskers correspond to the box' edges +/- 1.5 times the interquartile[0m     [31m [0m
+[31m [0m   [2m 664 [0m[2;33m│   [0m[33mrange (IQR: Q3-Q1), see "points" for other options.[0m                       [31m [0m
+[31m [0m   [2m 665 [0m[2;33m│   [0m[33m"""[0m                                                                       [31m [0m
+[31m [0m [31m❱ [0m 666 [2m│   [0m[94mreturn[0m make_figure(                                                       [31m [0m
+[31m [0m   [2m 667 [0m[2m│   │   [0margs=[96mlocals[0m(),                                                        [31m [0m
+[31m [0m   [2m 668 [0m[2m│   │   [0mconstructor=go.Box,                                                   [31m [0m
+[31m [0m   [2m 669 [0m[2m│   │   [0mtrace_patch=[96mdict[0m(boxpoints=points, notched=notched, x0=[33m"[0m[33m [0m[33m"[0m, y0=[33m"[0m[33m [0m[33m"[0m),  [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/plotly/express/[0m[1;33m_core.py[0m:[94m2117[0m in [92mmake_figure[0m  [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m2114 [0m[2m│   [0mlayout_patch = layout_patch [95mor[0m {}                                         [31m [0m
+[31m [0m   [2m2115 [0m[2m│   [0mapply_default_cascade(args)                                               [31m [0m
+[31m [0m   [2m2116 [0m[2m│   [0m                                                                          [31m [0m
+[31m [0m [31m❱ [0m2117 [2m│   [0margs = [1;4mbuild_dataframe(args, constructor)[0m                                 [31m [0m
+[31m [0m   [2m2118 [0m[2m│   [0m[94mif[0m constructor [95min[0m [go.Treemap, go.Sunburst, go.Icicle] [95mand[0m args[[33m"[0m[33mpath[0m[33m"[0m] [95mi[0m [31m [0m
+[31m [0m   [2m2119 [0m[2m│   │   [0margs = process_dataframe_hierarchy(args)                              [31m [0m
+[31m [0m   [2m2120 [0m[2m│   [0m[94mif[0m constructor [95min[0m [go.Pie]:                                               [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/plotly/express/[0m[1;33m_core.py[0m:[94m1513[0m in              [31m [0m
+[31m [0m [92mbuild_dataframe[0m                                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m1510 [0m[2m│   │   [0margs[[33m"[0m[33mcolor[0m[33m"[0m] = [94mNone[0m                                                  [31m [0m
+[31m [0m   [2m1511 [0m[2m│   [0m[2m# now that things have been prepped, we do the systematic rewriting of `a[0m [31m [0m
+[31m [0m   [2m1512 [0m[2m│   [0m                                                                          [31m [0m
+[31m [0m [31m❱ [0m1513 [2m│   [0mdf_output, wide_id_vars = [1;4mprocess_args_into_dataframe([0m                    [31m [0m
+[31m [0m   [2m1514 [0m[1;2;4m│   │   [0m[1;4margs, wide_mode, var_name, value_name[0m                                 [31m [0m
+[31m [0m   [2m1515 [0m[1;2;4m│   [0m[1;4m)[0m                                                                         [31m [0m
+[31m [0m   [2m1516 [0m                                                                              [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/plotly/express/[0m[1;33m_core.py[0m:[94m1234[0m in              [31m [0m
+[31m [0m [92mprocess_args_into_dataframe[0m                                                          [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m1231 [0m[2m│   │   │   │   │   │   [0m)                                                     [31m [0m
+[31m [0m   [2m1232 [0m[2m│   │   │   │   │   │   [0m[94mif[0m argument == [33m"[0m[33mindex[0m[33m"[0m:                               [31m [0m
+[31m [0m   [2m1233 [0m[2m│   │   │   │   │   │   │   [0merr_msg += [33m"[0m[33m\n[0m[33m To use the index, pass it in direc[0m [31m [0m
+[31m [0m [31m❱ [0m1234 [2m│   │   │   │   │   │   [0m[1;4;94mraise[0m[1;4m [0m[1;4;96mValueError[0m[1;4m(err_msg)[0m                             [31m [0m
+[31m [0m   [2m1235 [0m[2m│   │   │   │   [0m[94melif[0m length [95mand[0m [96mlen[0m(df_input[argument]) != length:            [31m [0m
+[31m [0m   [2m1236 [0m[2m│   │   │   │   │   [0m[94mraise[0m [96mValueError[0m(                                         [31m [0m
+[31m [0m   [2m1237 [0m[2m│   │   │   │   │   │   [0m[33m"[0m[33mAll arguments should have the same length. [0m[33m"[0m         [31m [0m
+[31m────────────────────────────────────────────────────────────────────────────────────────[0m
+[1;91mValueError: [0mValue of [32m'y'[0m is not the name of a column in [32m'data_frame'[0m. Expected one of 
+[1m[[0m[32m'tanggal'[0m, [32m'transaksi_id'[0m, [32m'donor_id'[0m, [32m'program'[0m, [32m'akad'[0m, [32m'nominal'[0m, [32m'tahun_bulan_ts'[0m, 
+[32m'nominal_original'[0m, [32m'is_data_loss_period'[0m, [32m'Recency'[0m, [32m'Frequency'[0m, [32m'Monetary'[0m, 
+[32m'donor_segment'[0m, [32m'tangga_donatur_keterangan'[0m, [32m'program_category'[0m, [32m'dominant_program'[0m[1m][0m 
+but received: affinity_score
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 10:31:26.326 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 10:31:49.972 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:31:50.128 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:31:50.160 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:31:50.262 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:31:50.321 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:31:50.416 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:31:50.463 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:56.489 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:56.542 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:56.573 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:56.674 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:56.721 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:56.762 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+[31m──[0m[31m────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────────[0m[31m──[0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mexec_code.py[0m: [31m [0m
+[31m [0m [94m129[0m in [92mexec_func_with_error_handling[0m                                                 [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mscript_runner[0m [31m [0m
+[31m [0m [1;33m.py[0m:[94m789[0m in [92mcode_to_exec[0m                                                              [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/content/[0m[1;33mapp.py[0m:[94m184[0m in [92m<module>[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m181 [0m                                                                               [31m [0m
+[31m [0m   [2m182 [0mcol_f1, col_f2, col_f3 = st.columns([94m3[0m)                                         [31m [0m
+[31m [0m   [2m183 [0m[94mwith[0m col_f1:                                                                   [31m [0m
+[31m [0m [31m❱ [0m184 [2m│   [0mtarget_seg = [1;4mst.multiselect([0m[1;4;33m"[0m[1;4;33mTarget Segmen CRM:[0m[1;4;33m"[0m[1;4m, filtered_df[[0m[1;4;33m'[0m[1;4;33mdonor_segme[0m [31m [0m
+[31m [0m   [2m185 [0m[94mwith[0m col_f2:                                                                   [31m [0m
+[31m [0m   [2m186 [0m[2m│   [0mtarget_prog = st.multiselect([33m"[0m[33mMinat Program:[0m[33m"[0m, filtered_df[[33m'[0m[33mdominant_progr[0m [31m [0m
+[31m [0m   [2m187 [0m[94mwith[0m col_f3:                                                                   [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/[0m[1;33mmetrics_util.py[0m:[94m698[0m in     [31m [0m
+[31m [0m [92mwrapped_func[0m                                                                         [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m51[0m [31m [0m
+[31m [0m [94m3[0m in [92mmultiselect[0m                                                                     [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m58[0m [31m [0m
+[31m [0m [94m2[0m in [92m_multiselect[0m                                                                    [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m137[0m in [92mget_default_indices[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m120[0m in [92mcheck_and_convert_to_indices[0m                                             [31m [0m
+[31m────────────────────────────────────────────────────────────────────────────────────────[0m
+[1;91mStreamlitAPIException: [0mThe default value [32m'Active Donor [0m[32m([0m[32mMulai Aktif[0m[32m)[0m[32m'[0m is not part of the
+options. Please make sure that every default values also exists in the options.
+2026-07-04 10:32:58.800 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:58.836 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:58.858 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:58.935 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:58.968 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:32:58.996 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+[31m──[0m[31m────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────────[0m[31m──[0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mexec_code.py[0m: [31m [0m
+[31m [0m [94m129[0m in [92mexec_func_with_error_handling[0m                                                 [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mscript_runner[0m [31m [0m
+[31m [0m [1;33m.py[0m:[94m789[0m in [92mcode_to_exec[0m                                                              [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/content/[0m[1;33mapp.py[0m:[94m184[0m in [92m<module>[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m181 [0m                                                                               [31m [0m
+[31m [0m   [2m182 [0mcol_f1, col_f2, col_f3 = st.columns([94m3[0m)                                         [31m [0m
+[31m [0m   [2m183 [0m[94mwith[0m col_f1:                                                                   [31m [0m
+[31m [0m [31m❱ [0m184 [2m│   [0mtarget_seg = [1;4mst.multiselect([0m[1;4;33m"[0m[1;4;33mTarget Segmen CRM:[0m[1;4;33m"[0m[1;4m, filtered_df[[0m[1;4;33m'[0m[1;4;33mdonor_segme[0m [31m [0m
+[31m [0m   [2m185 [0m[94mwith[0m col_f2:                                                                   [31m [0m
+[31m [0m   [2m186 [0m[2m│   [0mtarget_prog = st.multiselect([33m"[0m[33mMinat Program:[0m[33m"[0m, filtered_df[[33m'[0m[33mdominant_progr[0m [31m [0m
+[31m [0m   [2m187 [0m[94mwith[0m col_f3:                                                                   [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/[0m[1;33mmetrics_util.py[0m:[94m698[0m in     [31m [0m
+[31m [0m [92mwrapped_func[0m                                                                         [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m51[0m [31m [0m
+[31m [0m [94m3[0m in [92mmultiselect[0m                                                                     [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m58[0m [31m [0m
+[31m [0m [94m2[0m in [92m_multiselect[0m                                                                    [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m137[0m in [92mget_default_indices[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m120[0m in [92mcheck_and_convert_to_indices[0m                                             [31m [0m
+[31m────────────────────────────────────────────────────────────────────────────────────────[0m
+[1;91mStreamlitAPIException: [0mThe default value [32m'Active Donor [0m[32m([0m[32mMulai Aktif[0m[32m)[0m[32m'[0m is not part of the
+options. Please make sure that every default values also exists in the options.
+2026-07-04 10:33:12.156 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:12.187 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:12.221 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:12.292 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:12.324 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:12.349 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+[31m──[0m[31m────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────────[0m[31m──[0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mexec_code.py[0m: [31m [0m
+[31m [0m [94m129[0m in [92mexec_func_with_error_handling[0m                                                 [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mscript_runner[0m [31m [0m
+[31m [0m [1;33m.py[0m:[94m789[0m in [92mcode_to_exec[0m                                                              [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/content/[0m[1;33mapp.py[0m:[94m184[0m in [92m<module>[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m181 [0m                                                                               [31m [0m
+[31m [0m   [2m182 [0mcol_f1, col_f2, col_f3 = st.columns([94m3[0m)                                         [31m [0m
+[31m [0m   [2m183 [0m[94mwith[0m col_f1:                                                                   [31m [0m
+[31m [0m [31m❱ [0m184 [2m│   [0mtarget_seg = [1;4mst.multiselect([0m[1;4;33m"[0m[1;4;33mTarget Segmen CRM:[0m[1;4;33m"[0m[1;4m, filtered_df[[0m[1;4;33m'[0m[1;4;33mdonor_segme[0m [31m [0m
+[31m [0m   [2m185 [0m[94mwith[0m col_f2:                                                                   [31m [0m
+[31m [0m   [2m186 [0m[2m│   [0mtarget_prog = st.multiselect([33m"[0m[33mMinat Program:[0m[33m"[0m, filtered_df[[33m'[0m[33mdominant_progr[0m [31m [0m
+[31m [0m   [2m187 [0m[94mwith[0m col_f3:                                                                   [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/[0m[1;33mmetrics_util.py[0m:[94m698[0m in     [31m [0m
+[31m [0m [92mwrapped_func[0m                                                                         [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m51[0m [31m [0m
+[31m [0m [94m3[0m in [92mmultiselect[0m                                                                     [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m58[0m [31m [0m
+[31m [0m [94m2[0m in [92m_multiselect[0m                                                                    [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m137[0m in [92mget_default_indices[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m120[0m in [92mcheck_and_convert_to_indices[0m                                             [31m [0m
+[31m────────────────────────────────────────────────────────────────────────────────────────[0m
+[1;91mStreamlitAPIException: [0mThe default value [32m'Active Donor [0m[32m([0m[32mMulai Aktif[0m[32m)[0m[32m'[0m is not part of the
+options. Please make sure that every default values also exists in the options.
+2026-07-04 10:33:14.728 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:14.760 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:14.782 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:14.849 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:14.881 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:14.910 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+[31m──[0m[31m────────────────────────[0m[31m [0m[1;31mTraceback [0m[1;2;31m(most recent call last)[0m[31m [0m[31m─────────────────────────[0m[31m──[0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mexec_code.py[0m: [31m [0m
+[31m [0m [94m129[0m in [92mexec_func_with_error_handling[0m                                                 [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/scriptrunner/[0m[1;33mscript_runner[0m [31m [0m
+[31m [0m [1;33m.py[0m:[94m789[0m in [92mcode_to_exec[0m                                                              [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/content/[0m[1;33mapp.py[0m:[94m184[0m in [92m<module>[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m   [2m181 [0m                                                                               [31m [0m
+[31m [0m   [2m182 [0mcol_f1, col_f2, col_f3 = st.columns([94m3[0m)                                         [31m [0m
+[31m [0m   [2m183 [0m[94mwith[0m col_f1:                                                                   [31m [0m
+[31m [0m [31m❱ [0m184 [2m│   [0mtarget_seg = [1;4mst.multiselect([0m[1;4;33m"[0m[1;4;33mTarget Segmen CRM:[0m[1;4;33m"[0m[1;4m, filtered_df[[0m[1;4;33m'[0m[1;4;33mdonor_segme[0m [31m [0m
+[31m [0m   [2m185 [0m[94mwith[0m col_f2:                                                                   [31m [0m
+[31m [0m   [2m186 [0m[2m│   [0mtarget_prog = st.multiselect([33m"[0m[33mMinat Program:[0m[33m"[0m, filtered_df[[33m'[0m[33mdominant_progr[0m [31m [0m
+[31m [0m   [2m187 [0m[94mwith[0m col_f3:                                                                   [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/runtime/[0m[1;33mmetrics_util.py[0m:[94m698[0m in     [31m [0m
+[31m [0m [92mwrapped_func[0m                                                                         [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m51[0m [31m [0m
+[31m [0m [94m3[0m in [92mmultiselect[0m                                                                     [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/widgets/[0m[1;33mmultiselect.py[0m:[94m58[0m [31m [0m
+[31m [0m [94m2[0m in [92m_multiselect[0m                                                                    [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m137[0m in [92mget_default_indices[0m                                                      [31m [0m
+[31m [0m                                                                                      [31m [0m
+[31m [0m [2;33m/usr/local/lib/python3.12/dist-packages/streamlit/elements/lib/[0m[1;33moptions_selector_util[0m [31m [0m
+[31m [0m [1;33ms.py[0m:[94m120[0m in [92mcheck_and_convert_to_indices[0m                                             [31m [0m
+[31m────────────────────────────────────────────────────────────────────────────────────────[0m
+[1;91mStreamlitAPIException: [0mThe default value [32m'Active Donor [0m[32m([0m[32mMulai Aktif[0m[32m)[0m[32m'[0m is not part of the
+options. Please make sure that every default values also exists in the options.
+2026-07-04 10:33:42.184 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:42.290 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:42.315 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:42.394 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:42.438 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:42.496 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:33:42.544 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:39:49.723 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:39:49.834 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:39:49.871 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:39:49.953 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:39:49.998 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:39:50.054 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:39:50.121 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 10:55:32.492 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 10:55:54.286 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:55:54.450 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:55:54.502 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:55:54.649 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:55:54.730 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:55:54.832 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 10:55:54.895 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 11:15:17.064 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 11:15:36.920 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:15:38.114 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:15:38.282 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:15:38.330 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:15:38.506 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:15:38.589 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:15:38.655 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:15:38.705 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 11:23:22.391 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 11:23:53.921 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:23:54.909 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:23:55.070 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:23:55.115 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:23:55.255 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:23:55.339 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:23:55.436 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:23:55.515 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:09.358 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:09.945 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:10.031 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:10.059 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:10.142 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:10.187 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:10.244 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:25:10.304 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 11:36:38.327 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 11:36:51.107 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:36:52.112 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:36:52.344 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:36:52.400 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:36:52.556 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:36:52.634 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:36:52.728 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:36:52.775 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 11:48:16.992 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 11:48:28.336 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:48:29.223 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:48:29.336 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:48:29.366 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:48:29.472 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:48:29.526 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:48:29.592 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 11:48:29.640 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 11:55:45.772 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 12:13:18.274 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 12:13:41.394 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:13:42.284 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:13:42.389 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:13:42.423 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:13:42.531 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:13:42.583 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:13:42.652 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:13:42.712 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 12:31:21.143 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 12:31:32.450 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:32.616 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:33.565 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:33.670 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:33.701 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:33.798 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:33.865 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:33.933 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:31:33.982 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+  Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+2026-07-04 12:34:06.320 Uvicorn server started on 0.0.0.0:8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://172.28.0.12:8501
+  External URL: http://136.111.85.177:8501
+
+2026-07-04 12:34:58.892 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:34:59.057 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:34:59.925 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:35:00.025 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:35:00.055 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:35:00.144 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:35:00.197 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:35:00.276 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-07-04 12:35:00.328 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
