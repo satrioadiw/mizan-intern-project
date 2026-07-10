@@ -79,7 +79,7 @@ filtered_df = df[df['donor_segment'].isin(selected_segments)]
 # --- HEADER ---
 h_col1, h_col2 = st.columns([4, 1])
 with h_col1:
-    st.title("ጒጒ Professional Report: Preference Intelligence")
+    st.title("👩🏻‍💼💼 Professional Report: Preference Intelligence")
     st.markdown("### Internship Data Scientist with Mizan Amanah and Digital Skola")
 with h_col2:
     try:
