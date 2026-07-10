@@ -22,6 +22,16 @@ ramadhan_periods = [
     {"start": "2024-03-11", "end": "2024-04-09", "label": "1445 H"}
 ]
 
+# --- KONFIGURASI EVENT PENTING ---
+historical_events = [
+    {"date": "2020-03-02", "label": "Awal Pandemi COVID-19"},
+    {"date": "2020-07-31", "label": "Idul Adha 1441 H"},
+    {"date": "2021-07-20", "label": "Idul Adha 1442 H"},
+    {"date": "2022-07-09", "label": "Idul Adha 1443 H"},
+    {"date": "2023-06-28", "label": "Idul Adha 1444 H"},
+    {"date": "2024-06-16", "label": "Idul Adha 1445 H"}
+]
+
 # --- CUSTOM CSS ---
 st.markdown("""
     <style>
@@ -69,7 +79,7 @@ filtered_df = df[df['donor_segment'].isin(selected_segments)]
 # --- HEADER ---
 h_col1, h_col2 = st.columns([4, 1])
 with h_col1:
-    st.title("🏛️ Professional Report: Preference Intelligence")
+    st.title("ጒጒ Professional Report: Preference Intelligence")
     st.markdown("### Internship Data Scientist with Mizan Amanah and Digital Skola")
 with h_col2:
     try:
@@ -104,7 +114,7 @@ st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 # =============================================================================
 # SECTION 1: 2D RFM CLUSTERING
 # =============================================================================
-st.header("✨ Donor Behavioral Clustering (2D RFM)")
+st.header("🧐 Donor Behavioral Clustering (2D RFM)")
 df_2d = filtered_df.drop_duplicates('donor_id')
 fig_2d = px.scatter(df_2d, x='Recency', y='Frequency', size='Monetary',
                  color='donor_segment', hover_data=['donor_id'],
@@ -139,17 +149,18 @@ st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 # =============================================================================
 # SECTION 2: PRODUCT PORTFOLIO
 # =============================================================================
-st.header("☖ Product Portfolio & Market Fit")
+st.header("💰 Product Portfolio & Market Fit")
 c1, c2 = st.columns(2)
 with c1:
-    st.subheader("✰ Revenue Driver by Category")
+    st.subheader(" Revenue Driver by Category")
     prog_rev = filtered_df.groupby('program_category')['nominal'].sum().sort_values(ascending=False).reset_index()
-    fig1 = px.bar(prog_rev, x='nominal', y='program_category', orientation='h', color='nominal', color_continuous_scale='teal')
+    fig1 = px.bar(prog_rev, x='nominal', y='program_category', orientation='h', color='nominal', color_continuous_scale='YlOrRd')
+    fig1.update_layout(yaxis={'categoryorder':'total ascending'}) # Sort Highest to Lowest on Y
     st.plotly_chart(fig1, use_container_width=True)
 with c2:
-    st.subheader("⚖ Market Penetration (Transaction Mix)")
+    st.subheader("Market Penetration (Transaction Mix)")
     prog_cnt = filtered_df['program_category'].value_counts().reset_index()
-    fig2 = px.pie(prog_cnt, values='count', names='program_category', hole=0.5, color_discrete_sequence=px.colors.sequential.GnBu_r)
+    fig2 = px.pie(prog_cnt, values='count', names='program_category', hole=0.5, color_discrete_sequence=px.colors.sequential.YlOrRd_r)
     st.plotly_chart(fig2, use_container_width=True)
 
 st.markdown("""
@@ -175,15 +186,77 @@ st.markdown("""
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # =============================================================================
-# SECTION 3: SEASONALITY
+# SECTION 3: SEASONALITY (REVISED)
 # =============================================================================
-st.header("⌒ Temporal Dynamics & Seasonality")
+st.header("📈 Temporal Dynamics & Seasonality")
+
+# Kontrol interaktif untuk Kalender
+calendar_mode = st.radio("Pilih Basis Penanggalan Sumbu X:", ["Kalender Masehi", "Kalender Hijriah"], horizontal=True)
+
 df_trend = filtered_df.copy()
 df_trend['Month'] = df_trend['tanggal'].dt.to_period('M').dt.to_timestamp()
 trend_data = df_trend.groupby('Month').size().reset_index(name='Transactions')
-fig_trend = px.area(trend_data, x='Month', y='Transactions', title='Interactive Seasonality Map', template='plotly_white')
+
+# Logika Warna & Detail Hijriah
+plot_color = "#e51e1e" if calendar_mode == "Kalender Masehi" else "#2e7d32"
+
+fig_trend = go.Figure()
+
+# Tambahkan Area Chart
+fig_trend.add_trace(go.Scatter(
+    x=trend_data['Month'],
+    y=trend_data['Transactions'],
+    fill='tozeroy',
+    mode='lines+markers',
+    line=dict(color=plot_color, width=2),
+    name='Jumlah Transaksi',
+    marker=dict(size=6)
+))
+
+# Mapping Manual Label Hijriah untuk Sumbu X
+hijri_months = ["Muharram", "Safar", "Rabiul Awal", "Rabiul Akhir", "Jumadil Awal", "Jumadil Akhir", "Rajab", "Syakban", "Ramadhan", "Syawal", "Zulkaidah", "Zulhijjah"]
+
+if calendar_mode == "Kalender Hijriah":
+    tick_vals = trend_data['Month'][::3]
+    tick_text = []
+    year_h = 1441
+    for i, _ in enumerate(tick_vals):
+        m_idx = (i * 3) % 12
+        if m_idx == 0 and i > 0: year_h += 1
+        tick_text.append(f"{hijri_months[m_idx]} {year_h}")
+
+    fig_trend.update_xaxes(tickvals=tick_vals, ticktext=tick_text)
+else:
+    fig_trend.update_xaxes(dtick="M3", tickformat="%b %Y")
+
+# Tambahkan Highlight Ramadhan
 for p in ramadhan_periods:
-    fig_trend.add_vrect(x0=p['start'], x1=p['end'], fillcolor="orange", opacity=0.15, layer="below", annotation_text=f"Ramadhan {p['label']}")
+    fig_trend.add_vrect(
+        x0=p['start'], x1=p['end'],
+        fillcolor="orange", opacity=0.15,
+        layer="below",
+        annotation_text=f"Ramadhan {p['label']}",
+        annotation_position="top left"
+    )
+
+# Tambahkan Keterangan Peristiwa Penting (Anotasi)
+for ev in historical_events:
+    fig_trend.add_annotation(
+        x=ev['date'], y=trend_data['Transactions'].max() * 0.7,
+        text=ev['label'],
+        showarrow=True, arrowhead=1,
+        ax=0, ay=-40,
+        bgcolor="white", opacity=0.8
+    )
+
+fig_trend.update_layout(
+    title=f'Interactive Seasonality Map ({calendar_mode})',
+    template='plotly_white',
+    xaxis_title="Periode Waktu",
+    yaxis_title="Jumlah Transaksi",
+    height=600
+)
+
 st.plotly_chart(fig_trend, use_container_width=True)
 
 st.markdown("""
@@ -191,6 +264,7 @@ st.markdown("""
     <p class='sub-heading'>① Cara Membaca Grafik:</p>
     <ul>
         <li>Garis area menunjukkan fluktuasi jumlah transaksi dari waktu ke waktu. Kotak oranye menandakan periode Ramadhan setiap tahunnya.</li>
+        <li>Gunakan tombol pilihan di atas untuk melihat penanggalan dalam <b>Hijriah</b> guna melihat korelasi hari besar Islam lebih jelas.</li>
     </ul>
     <p class='sub-heading'>② Analisis Data:</p>
     <ul>
@@ -211,12 +285,12 @@ st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 # =============================================================================
 # SECTION 4: STRATEGIC MATRIX
 # =============================================================================
-st.header("⚙ Strategic Behavioral Matrix")
+st.header("🔑 Strategic Behavioral Matrix")
 cola, colb = st.columns(2)
 with cola:
-    st.subheader("✨ Loyalty vs Preference Heatmap")
+    st.subheader("Loyalty vs Preference Heatmap")
     pref_matrix = pd.crosstab(filtered_df['donor_segment'], filtered_df['program_category'], normalize='index') * 100
-    fig_heat = px.imshow(pref_matrix, text_auto='.1f', aspect="auto", color_continuous_scale='YlGnBu')
+    fig_heat = px.imshow(pref_matrix, text_auto='.1f', aspect="auto", color_continuous_scale='YlOrRd')
     st.plotly_chart(fig_heat, use_container_width=True)
     st.markdown("""
     <div class='insight-box'>
@@ -230,7 +304,7 @@ with cola:
     """, unsafe_allow_html=True)
 
 with colb:
-    st.subheader("⚖ Affinity Score Spread")
+    st.subheader("Affinity Score Spread")
     fig_box = px.box(filtered_df.drop_duplicates('donor_id'), x='donor_segment', y='affinity_score', color='donor_segment')
     st.plotly_chart(fig_box, use_container_width=True)
     st.markdown("""
@@ -253,9 +327,59 @@ with colb:
 st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
 
 # =============================================================================
+# SECTION 4.5: ACTIONABLE INTERVENTIONS (NEW)
+# =============================================================================
+st.header("📍🛣️ Peta Intervensi CRM (Actionable Interventions)")
+
+def get_action(prog):
+    if prog == 'Zakat': return 'Cross-Sell: Sedekah Harian'
+    elif prog == 'Sedekah/Infaq': return 'Upsell: Yatim & Pendidikan'
+    else: return 'Engagement: Newsletter'
+
+# Prepare data for Bubble Chart
+df_bubble = filtered_df[['donor_id', 'donor_segment', 'dominant_program']].drop_duplicates('donor_id')
+df_bubble['Strategic_Action'] = df_bubble['dominant_program'].apply(get_action)
+bubble_data = df_bubble.groupby(['donor_segment', 'Strategic_Action']).size().reset_index(name='Donor_Count')
+
+fig_crm = px.scatter(bubble_data, x="donor_segment", y="Strategic_Action", 
+                 size="Donor_Count", color="Donor_Count",
+                 hover_name="donor_segment", size_max=60,
+                 color_continuous_scale='RdBu',
+                 title="Mapping Segmen vs Rekomendasi Kampanye")
+
+fig_crm.update_layout(xaxis_title="Segmen Donatur (Loyalty Tier)", yaxis_title="Rekomendasi Kampanye")
+st.plotly_chart(fig_crm, use_container_width=True)
+
+st.markdown("""
+<div class='insight-box'>
+    <p class='sub-heading'>① Cara Membaca Grafik Dua Dimensi:</p>
+    <ul>
+        <li><b>Sumbu Horizontal (X):</b> Mewakili tingkatan loyalitas donatur (dari New hingga Lost).</li>
+        <li><b>Sumbu Vertikal (Y):</b> Mewakili jenis tindakan strategis (Strategic Action) yang direkomendasikan sistem.</li>
+        <li><b>Ukuran Gelembung:</b> Mewakili jumlah donatur. Semakin besar gelembung, semakin banyak target donatur di area tersebut.</li>
+    </ul>
+    <p class='sub-heading'>② Data Analisis (Deep Dive):</p>
+    <ul>
+        <li>Terlihat gelembung terbesar terkonsentrasi pada aksi <b>'Engagement: Newsletter'</b> untuk segmen <b>Lost/Dormant</b>.</li>
+        <li>Ini menunjukkan volume target reaktivasi sangat besar, namun pendekatannya harus bersifat <i>soft-selling</i> (edukasi/berita) agar tidak mengganggu donatur yang sudah lama vakum.</li>
+        <li><b>Konsentrasi Masif pada Kuadran Reaktivasi (Lost/Dormant x Engagement)</b> ➔ Gelembung terbesar mendominasi irisan antara segmen Lost Donor (Hilang) dan Dormant Donor (Tidur) dengan kampanye 'Engagement: Newsletter'.</li>
+        <li><b>Peluang Peningkatan CLV pada Kuadran Aktif (Active Donor x Upsell)</b> ➔ Terdapat gelembung berukuran moderat pada irisan Active Donor (Mulai Aktif) dengan kampanye 'Upsell: Yatim & Pendidikan'. </li>
+        <li><b>Distribusi Cross-Sell yang Spesifik</b> ➔ Tindakan 'Cross-Sell Sedekah Harian' ditargetkan secara spesifik, tidak dipukul rata ke semua gelembung. </li>
+    </ul>
+    <p class='sub-heading'>③ Business Insight:</p>
+    <ul>
+        <li><b>Internal Mizan Amanah:</b> Tim CRM harus memprioritaskan pembuatan konten 'Impact Stories' untuk grup Newsletter guna memicu ketertarikan kembali para donatur yang hilang.</li>
+        <li><b>Eksternal Mizan Amanah:</b> Yayasan dapat mengalokasikan anggaran iklan digital lebih efisien dengan menargetkan <i>upselling</i> hanya pada klaster donatur yang sedang aktif.</li>
+    </ul>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("<div class='section-divider'></div>", unsafe_allow_html=True)
+
+# =============================================================================
 # SECTION 5: SMART LEADS GENERATOR
 # =============================================================================
-st.header("✰ Smart CRM Leads Generator")
+st.header("🤝🏼 Smart CRM Leads Generator")
 st.info("Filter dan ekspor data target kampanye.")
 col_f1, col_f2, col_f3 = st.columns(3)
 with col_f1: target_seg = st.multiselect("Target Segmen CRM:", filtered_df['donor_segment'].unique(), default=['Active Donor (Mulai Aktif)'])
@@ -267,12 +391,10 @@ if target_prog: leads = leads[leads['dominant_program'].isin(target_prog)]
 leads = leads[leads['Monetary'] >= min_monetary]
 leads_clean = leads[['donor_id', 'donor_segment', 'dominant_program', 'Monetary', 'Frequency', 'Recency']].drop_duplicates('donor_id')
 
-def suggest_action(prog):
-    if prog == 'Zakat': return 'Cross-Sell: Sedekah Harian'
-    elif prog == 'Sedekah/Infaq': return 'Upsell: Yatim & Pendidikan'
-    else: return 'Engagement: Newsletter'
+# Format Monetary Column as IDR (Rp.)
+leads_clean['Monetary'] = leads_clean['Monetary'].apply(lambda x: f"Rp. {x:,.0f}")
 
-leads_clean['Strategic_Action'] = leads_clean['dominant_program'].apply(suggest_action)
+leads_clean['Strategic_Action'] = leads_clean['dominant_program'].apply(get_action)
 st.dataframe(leads_clean, use_container_width=True)
 
 st.markdown("""
@@ -280,16 +402,16 @@ st.markdown("""
     <p class='sub-heading'>① Detail Strategic Action & Panduan Eksternal:</p>
     <ul>
         <li><b>Cross-Sell: Sedekah Harian (Target: Donatur Zakat)</b>
-            <br>- <b>CRM:</b> Kirimkan pesan apresiasi atas zakatnya, lalu tawarkan program Sedekah Subuh Rp2.000/hari sebagai 'tabungan akhirat harian'.
-            <br>- <b>Sales & Marketing:</b> Buat konten visual tentang kemudahan berdonasi harian lewat QRIS.
+            <br>➔ <b>CRM:</b> Kirimkan pesan apresiasi atas zakatnya, lalu tawarkan program Sedekah Subuh Rp2.000/hari sebagai 'tabungan akhirat harian'.
+            <br>➔ <b>Sales & Marketing:</b> Buat konten visual tentang kemudahan berdonasi harian lewat QRIS.
         </li>
         <li><b>Upsell: Yatim & Pendidikan (Target: Donatur Sedekah)</b>
-            <br>- <b>CRM:</b> Bagikan profil anak yatim binaan yang sukses sekolah. Ajak donatur naik kelas menjadi 'Orang Tua Asuh'.
-            <br>- <b>Sales & Marketing:</b> Fokus pada <i>storytelling</i> emosional dan laporan transparansi biaya pendidikan.
+            <br>➔ <b>CRM:</b> Bagikan profil anak yatim binaan yang sukses sekolah. Ajak donatur naik kelas menjadi 'Orang Tua Asuh'.
+            <br>➔ <b>Sales & Marketing:</b> Fokus pada <i>storytelling</i> emosional dan laporan transparansi biaya pendidikan.
         </li>
         <li><b>Engagement: Newsletter (Target: Segmen Lainnya)</b>
-            <br>- <b>CRM:</b> Kirim kabar terbaru mengenai kegiatan asrama tanpa ajakan donasi uang keras (Hard-selling).
-            <br>- <b>Sales & Marketing:</b> Tingkatkan <i>brand awareness</i> melalui video dokumenter pendek kegiatan yayasan.
+            <br>➔ <b>CRM:</b> Kirim kabar terbaru mengenai kegiatan asrama tanpa ajakan donasi uang keras (Hard-selling).
+            <br>➔ <b>Sales & Marketing:</b> Tingkatkan <i>brand awareness</i> melalui video dokumenter pendek kegiatan yayasan.
         </li>
     </ul>
     <p class='sub-heading'>② Business Insight:</p>
