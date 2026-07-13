@@ -4,6 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
+from hijri_converter import Gregorian
 from PIL import Image
 
 # --- KONFIGURASI HALAMAN ---
@@ -194,10 +195,11 @@ st.header("📈 Temporal Dynamics & Seasonality")
 calendar_mode = st.radio("Pilih Basis Penanggalan Sumbu X:", ["Kalender Masehi", "Kalender Hijriah"], horizontal=True)
 
 df_trend = filtered_df.copy()
+# Memastikan format datetime Masehi untuk basis plot
 df_trend['Month'] = df_trend['tanggal'].dt.to_period('M').dt.to_timestamp()
 trend_data = df_trend.groupby('Month').size().reset_index(name='Transactions')
 
-# Logika Warna & Detail Hijriah
+# Logika Warna
 plot_color = "#e51e1e" if calendar_mode == "Kalender Masehi" else "#2e7d32"
 
 fig_trend = go.Figure()
@@ -213,19 +215,25 @@ fig_trend.add_trace(go.Scatter(
     marker=dict(size=6)
 ))
 
-# Mapping Manual Label Hijriah untuk Sumbu X
-hijri_months = ["Muharram", "Safar", "Rabiul Awal", "Rabiul Akhir", "Jumadil Awal", "Jumadil Akhir", "Rajab", "Syakban", "Ramadhan", "Syawal", "Zulkaidah", "Zulhijjah"]
+# Mapping Bulan Hijriah Bahasa Indonesia Lengkap
+hijri_months_indo = ["Muharram", "Safar", "Rabiulawal", "Rabiulakhir",
+                     "Jumadil awal", "Jumadil akhir", "Rajab", "Sya'ban",
+                     "Ramadhan", "Syawal", "Dzulkaidah", "Dzulhijjah"]
 
 if calendar_mode == "Kalender Hijriah":
-    tick_vals = trend_data['Month'][::3]
+    # Menampilkan detail bulanan lengkap secara berurutan untuk sumbu X Hijriah
+    tick_vals = trend_data['Month']
     tick_text = []
-    year_h = 1441
-    for i, _ in enumerate(tick_vals):
-        m_idx = (i * 3) % 12
-        if m_idx == 0 and i > 0: year_h += 1
-        tick_text.append(f"{hijri_months[m_idx]} {year_h}")
 
-    fig_trend.update_xaxes(tickvals=tick_vals, ticktext=tick_text)
+    for dt in tick_vals:
+        # Konversi dinamis dari Gregorian ke Hijriah untuk setiap bulan data
+        hijri_date = Gregorian(dt.year, dt.month, dt.day).to_hijri()
+        # Mengambil nama bulan sesuai list hijri_months_indo (index dari 0)
+        month_name = hijri_months_indo[hijri_date.month - 1]
+        # Menampilkan format lengkap Bulan dan Tahun Hijriah
+        tick_text.append(f"{month_name} {hijri_date.year} H")
+
+    fig_trend.update_xaxes(tickvals=tick_vals, ticktext=tick_text, tickangle=45)
 else:
     fig_trend.update_xaxes(dtick="M3", tickformat="%b %Y")
 
@@ -341,7 +349,7 @@ df_bubble = filtered_df[['donor_id', 'donor_segment', 'dominant_program']].drop_
 df_bubble['Strategic_Action'] = df_bubble['dominant_program'].apply(get_action)
 bubble_data = df_bubble.groupby(['donor_segment', 'Strategic_Action']).size().reset_index(name='Donor_Count')
 
-fig_crm = px.scatter(bubble_data, x="donor_segment", y="Strategic_Action", 
+fig_crm = px.scatter(bubble_data, x="donor_segment", y="Strategic_Action",
                  size="Donor_Count", color="Donor_Count",
                  hover_name="donor_segment", size_max=60,
                  color_continuous_scale='RdBu',
